@@ -1,0 +1,204 @@
+html,body {
+	margin: 0;
+	padding: 0;
+	height: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-family: 隶书;
+	user-select: none;
+}
+::-webkit-scrollbar{
+	display: none;
+}
+#mapContainer {
+	width: 100%;
+	height: 100%;
+}
+div.leaflet-top.leaflet-left{
+	display: none;	/*隐藏地图的放大缩小按钮*/
+}
+
+#switchType {
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	z-index: 999;
+}
+#switchType span {
+	font-size: 12px;
+	background: #00ffff;
+	display: block;
+	line-height: 30px;
+	padding: 0 30px;
+	border-radius: 3px;
+	color: #aaaaff;
+	cursor: pointer;
+}
+#switchType > ul {
+	border-radius: 3px;
+	background-color: transparent;
+	height: 0;
+	transition: all ease-in 0.3s;
+	margin: 0;
+	padding: 0;
+	box-shadow: 1px 1px 0 #aaaaff, -1px -1px 0 #aaaaff;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+#switchType > ul > li {
+	list-style: none;
+	font-size: 18px;
+	display: block;
+	line-height: 26px;
+	padding: 0 30px;
+	color: #C0C2A8;
+	cursor: pointer;
+	transition: all ease-in 0.2s;
+	background-color: transparent;
+	position: relative;
+}
+#switchType > ul > li:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+#switchType > ul > li.current {
+	background-color: #5a3101;
+}
+#switchType > ul > li.title {
+	font-size: 12px;
+	line-height: 18px;
+	color: #999;
+	cursor: default;
+	border-top: solid 1px #666;
+	border-bottom: solid 1px #666;
+}
+#switchType > ul > li.title.current {
+	background-color: transparent;
+}
+#switchType:hover ul {
+	height: 20vh !important;
+}
+.leaflet-container{
+	background-image: url("../images/bg.png") !important;
+	font-family: 隶书;
+}
+.leaflet-container h1,.leaflet-container span,.markButton,.starwostrategy a{
+	cursor: pointer;
+}
+.leaflet-container span{
+	font-size: 1.5em;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip, .markButton {
+	background-color: #aaaaff;
+	color: #5a3101;
+}
+.buttonContainer button{
+	font-family: 隶书;
+	font-size: 1.5em;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+.starwostrategy{
+	width: 0%;
+	height: 38vh;
+	background-color: white;
+	position: fixed;
+	z-index: 3999;
+	border-radius:0 0 22px 22px;
+	transition: all ease-in 0.26s;
+	overflow: hidden;
+}
+.back:hover{
+	border-radius: 3px;
+	box-shadow: 0vh 0vh 3px 3px #00000031;
+	background: rgba(167, 167, 167, 0.5);
+	color: #00aaff;
+	opacity:0.9;
+}
+.strategycontent{
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+	
+}
+.starwostrategy  h1{
+	padding: 0px;
+	margin: 0;
+	line-height: 1.8em;
+	display: flex;
+	justify-content: center;
+}
+.starwostrategy p{
+	margin: 0;
+	font-size: 1.6em;
+	text-indent:2em;
+	text-align:left;
+	scroll-snap-align: none;
+}
+.component iframe{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2999;
+}
+.starwostrategy a{
+	background: rgba(85, 170, 255, 0.6);
+	font-size: 22px;
+	border-radius: 0.5vh;
+	margin-right: 6vh;
+}
+.starwostrategy a:active{
+	background: rgba(170, 170, 255, 0.8);
+}
+.starwostrategy p a{
+	text-indent:0em;
+	margin-top: 2vh;
+	text-indent:0.5em;
+}
+.back{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity:0.2;
+	background:transparent !important;
+	margin: 0;
+	z-index: 9999;
+}
+.action{
+	height: 10px;
+	width: 100%;
+	background-image: linear-gradient(to bottom,transparent,#aaaaff);
+	position: absolute;
+	bottom: 0;
+	cursor: pointer;
+	z-index: 9999;
+}
+
+#showhide{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 40px 50px;
+	z-index: 1999;
+	cursor: pointer;
+}
+.showhide{
+	transition: transform 1s ease;
+}
+.titleh1{
+	width: 100%;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	background-image: linear-gradient(to bottom,#ffffff,#ffffff80,transparent);
+}
+.content{
+	margin-top: 2em;
+	width: 100vw;
+}
+.content img{
+	width: 100%;
+}
