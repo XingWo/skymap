@@ -138,7 +138,8 @@ div.leaflet-top.leaflet-left{
 }
 .component iframe{
 	height: 100%;
-	width: 100%;
+	min-height: 38vh;
+	width: 100vw;
 	position: absolute;
 	top: 0;
 	left: 0;

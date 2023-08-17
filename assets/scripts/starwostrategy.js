@@ -78,8 +78,14 @@ $(document).ready(function() {
 		$(".starwostrategy").css({
 			"transition":"all ease-in 0.26s",
 		});
-		if (newHeight <= 23) {
-			back();
+		if (newHeight <= 38) {
+			if (starwostrategyUrlzt == 1) {
+				starwostrategyUrlzt = 0;
+				back();
+				starwostrategyUrlzt = 1;
+			}else{
+				back();
+			}
 		}
 		$(".stariframe").css({
 			"pointer-events":"auto",
@@ -117,11 +123,13 @@ function strategy(element) {
 			$('.markButton'+key).prop("disabled", true);
 			$('.starwostrategy').fadeOut(300, function() {
 			    $('.starwostrategy').fadeIn(0);//似乎并不能淡入淡出
+				$('.components').html('');
 				starstrategying();
 				$('.markButton'+key).prop("disabled", false);
 			});
+		}else{
+			$('.components').html('');
 		}
-		$('.components').html('');
 		starwostrategyUrlzt = 0;
 	}
 	starstrategying();
