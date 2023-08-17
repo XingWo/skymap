@@ -175,5 +175,5 @@ $(document).ready(function() {
 		$('#mapContainer .leaflet-shadow-pane').css({
 			"display":"none",
 		});
-	}
+	};
 });/*showhide按钮方案*/

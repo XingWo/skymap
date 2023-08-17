@@ -134,9 +134,6 @@ function strategy(element) {
 	}
 	starstrategying();
 }
-
-
-
 function starwourl(element) {
 	var that = $(element);
 	var key = that.attr("data-key");
@@ -151,3 +148,19 @@ function starwourl(element) {
 	$('.components').html(starHtml);
 	starwostrategyUrlzt = 1;
 }
+$(document).ready(function() {
+	var keystarwo = "starwo";
+	var newValue = localStorage.getItem(keystarwo);
+	localStorage.setItem(keystarwo, newValue ? "1" : "");
+	if (newValue){
+		console.log('你点这里干啥，没给一个关注的嘛——哔哩哔哩"星沃"');
+	}else{
+		$('.starwostrategy').css({
+			"height":"38vh",
+			"width":"100%",
+		});
+		starwostrategyzt2 = 0;
+		strategyzt = 1;
+		localStorage.setItem(keystarwo, newValue ? "" : "1");
+	};
+});
