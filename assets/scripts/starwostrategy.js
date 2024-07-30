@@ -37,7 +37,7 @@ function action(){
 	if (elIsMove) {
 		elIsMove = false;    //如果状态是true，则证明元素被移动过，不触发click调用的方法
 		return;
-	} else{
+	}else{
 		$('.starwostrategy').css({
 			"height":"100%",
 			"border-radius":"0 0",
@@ -50,46 +50,82 @@ let startY = 0;
 let originalHeight;
 let newHeight;
 $(document).ready(function() {
-	$(".action").on("mousedown", function(e) {
-		isResizing = true;
-		startY = e.clientY;
-		originalHeight = $(".starwostrategy").height();
-		$(".starwostrategy").css({
-			"transition":"all ease-in 0s",
-		});
-		$(".stariframe").css({
-			"pointer-events":"none",
-		});
+	// 鼠标按下或触摸开始时的事件处理
+	$(".action").on("mousedown touchstart", function(e) {
+	    e.preventDefault(); // 阻止默认行为，例如滚动或链接跳转
+	
+	    // 设置isResizing标志
+	    isResizing = true;
+	
+	    // 获取原始事件对象，以兼容触摸和鼠标事件
+	    var originalEvent = e.originalEvent || e;
+	    var touchEvent = originalEvent.touches || originalEvent.changedTouches;
+	    var event = touchEvent ? touchEvent[0] : e;
+	
+	    // 初始化startY和originalHeight
+	    startY = event.clientY;
+	    originalHeight = $(".starwostrategy").height();
+	
+	    // 禁用过渡效果，以便在调整大小时立即看到变化
+	    $(".starwostrategy").css({
+	        "transition":"all ease-in 0s",
+	    });
+	    $(".stariframe").css({
+	        "pointer-events":"none",
+	    });
 	});
-	$(document).on("mousemove", function(e) {
-		if (isResizing) {
-			elIsMove = true;
-			starwostrategyzt = 1;
-			const deltaY = e.clientY - startY;
-			newHeight = originalHeight + deltaY;
-			$('.starwostrategy').css({
-				"height":newHeight + "px",
-				"border-radius":"0 0 22px 22px",
-			})
-		}
+	
+	// 鼠标移动或触摸移动时的事件处理
+	$(document).on("mousemove touchmove", function(e) {
+	    e.preventDefault(); // 阻止默认行为，例如页面滚动
+	
+	    if (isResizing) {
+	        // 获取原始事件对象
+	        var originalEvent = e.originalEvent || e;
+	        var touchEvent = originalEvent.touches || originalEvent.changedTouches;
+	        var event = touchEvent ? touchEvent[0] : e;
+	
+	        elIsMove = true;
+	        starwostrategyzt = 1;
+	        // 计算新的deltaY和新的高度
+	        const deltaY = event.clientY - startY;
+	        newHeight = originalHeight + deltaY;
+	
+	        // 更新.starwostrategy的高度和边框圆角
+	        $('.starwostrategy').css({
+	            "height": newHeight,
+	            "border-radius": "0 0 22px 22px"
+	        });
+	    }
 	});
-	$(".action").on("mouseup", function() {
-		isResizing = false;
-		$(".starwostrategy").css({
-			"transition":"all ease-in 0.26s",
-		});
-		if (newHeight <= 38) {
-			if (starwostrategyUrlzt == 1) {
-				starwostrategyUrlzt = 0;
-				back();
-				starwostrategyUrlzt = 1;
-			}else{
-				back();
-			}
-		}
-		$(".stariframe").css({
-			"pointer-events":"auto",
-		});
+	
+	// 鼠标释放或触摸结束时的事件处理
+	$(".action").on("mouseup touchend", function() {
+	    // 重置isResizing标志
+	    isResizing = false;
+	
+	    // 恢复过渡效果
+	    $(".starwostrategy").css({
+	        "transition": "all ease-in 0.26s"
+	    });
+	
+	  
+	
+	    // 根据newHeight的值执行相应的逻辑
+	    if (newHeight <= 38) {
+	        // 假设starwostrategyUrlzt用于控制是否显示某些内容
+	        if (starwostrategyUrlzt == 1) {
+	            starwostrategyUrlzt = 0; // 更新状态
+	            back(); // 执行回退操作，例如隐藏元素
+	            starwostrategyUrlzt = 1; // 重置状态
+	        } else {
+	            back(); // 执行回退操作
+	        }
+	    }
+	      // 恢复iframe的指针事件
+	    $(".stariframe").css({
+	        "pointer-events": "auto"
+	    });
 	});
 });
 function strategy(element) {
